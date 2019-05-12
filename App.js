@@ -7,7 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, Image, View, Dimensions} from 'react-native';
+// import logo from './resources/img/s2.png';
+
+const width = Dimensions.get('screen').width;
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,11 +22,26 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+    const users = [
+      {
+        id: 1,
+        name: 'Gabriel'
+      },
+      {
+        id: 2,
+        name: 'John Doe'
+      }
+    ];
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+      <View>
+        <Text>Hello</Text>
+        {users.map(user =>
+          <View key={user.id}>
+            <Text>{user.name}</Text>
+            <Image source={require('./resources/img/s2-checked.png')} style={{width, height: width}} />
+          </View>
+        )}
       </View>
     );
   }
