@@ -26,16 +26,22 @@ export default class App extends Component<Props> {
     ];
 
     return (
-      <View style={{ marginTop: 20 }}>
+      <View style={styles.container}>
         <FlatList
           data={photos}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) =>
             <View>
-              <Text>{item.user}</Text>
+              <View style={styles.avatar}>
+                <Image
+                  source={require('./resources/img/s2-checked.png')}
+                  style={styles.profilePic}
+                />
+                <Text>{item.user}</Text>
+              </View>
               <Image
                 source={require('./resources/img/s2-checked.png')}
-                style={{width, height: width}}
+                style={styles.photo}
               />
             </View>
           }
@@ -44,3 +50,23 @@ export default class App extends Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 20
+  },
+  avatar: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  profilePic: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+    borderRadius: 20
+  },
+  photo: {
+    width,
+    height: width
+  }
+});
