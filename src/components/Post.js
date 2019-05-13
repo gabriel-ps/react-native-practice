@@ -11,20 +11,19 @@ import {StyleSheet, Text, Image, View, Dimensions} from 'react-native';
 
 const width = Dimensions.get('screen').width;
 
-type Props = {};
-export default class Post extends Component<Props> {
+export default class Post extends Component {
   render() {
     return (
       <View>
         <View style={styles.avatar}>
           <Image
-            source={require('../../resources/img/s2-checked.png')}
+            source={{uri: this.props.photo.urlPerfil}}
             style={styles.profilePic}
           />
-          <Text>{this.props.photo.user}</Text>
+          <Text>{this.props.photo.loginUsuario}</Text>
         </View>
         <Image
-          source={require('../../resources/img/s2-checked.png')}
+          source={{uri: this.props.photo.urlFoto}}
           style={styles.photo}
         />
       </View>
